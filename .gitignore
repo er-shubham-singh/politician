@@ -1,0 +1,19 @@
+# Node.js dependencies
+node_modules/
+
+# Build directories
+frontend/build/
+frontend/dist/
+backend/build/
+backend/dist/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
