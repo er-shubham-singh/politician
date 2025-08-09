@@ -44,7 +44,7 @@ It is a fully responsive and modern website for a political figure, showcasing b
 
 ```bash
 test/
-├── frontend/
+├── frontend/my-project
 │   ├── components/
 │   ├── pages/
 │   ├── redux/

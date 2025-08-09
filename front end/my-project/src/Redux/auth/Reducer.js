@@ -23,7 +23,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         isAuthenticated: true,
-        role: action.payload.role, // must be 'admin'
+        role: action.payload.role, 
         user: action.payload.user,
         token: action.payload.token,
       };

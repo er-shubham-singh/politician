@@ -15,7 +15,7 @@ export const createVolunteer = (data) => async (dispatch) => {
 
     dispatch({
       type: CREATE_VOLUNTEER_SUCCESS,
-      payload: response.data.volunteer,  // your volunteer data here
+      payload: response.data.volunteer,  
     });
   } catch (error) {
     dispatch({

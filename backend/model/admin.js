@@ -7,7 +7,6 @@ const adminSchema = new mongoose.Schema({
   password: { type: String, required: true },
 });
 
-// Add password comparison method
 adminSchema.methods.comparePassword = function (enteredPassword) {
   return bcrypt.compare(enteredPassword, this.password);
 };

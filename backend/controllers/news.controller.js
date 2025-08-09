@@ -1,23 +1,4 @@
-// import { createNewsService, getAllNewsServices } from "../services/news.services.js"
 
-// export const getAllNews = async(req,res) =>{
-//     try{
-//         const newsList = await getAllNewsServices()
-//         res.status(200).json({message:"fetch successfully",success:true, data:newsList})
-//     }catch(error){
-//             res.status(500).json({message:"fetched failed",success:false,error:error.message})
-//     }
-// }
-
-// export const createNews = async(req,res)=>{
-//     try{
-//         const newsData = req.body;
-//         const news = await createNewsService(newsData)
-//         res.status(201).json({message:"news added",news})
-//     } catch(error){
-//         res.status(501).json({error:"failed to create", details:error.message})
-//     }
-// }
 
 import { createNewsService, getAllNewsServices } from "../services/news.services.js";
 import cloudinary from '../config/cloudinaryConfig.js'; 

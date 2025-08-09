@@ -4,9 +4,7 @@ const About = () => {
   return (
     <section className="py-12 px-6 bg-gray-50">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-        
-        {/* Profile Image */}
-        <div className="flex justify-center">
+                <div className="flex justify-center">
           <img
             src="https://via.placeholder.com/400x400.png?text=Politician+Photo"
             alt="Shri XYZ"
@@ -14,7 +12,6 @@ const About = () => {
           />
         </div>
 
-        {/* About Content */}
         <div>
           <h2 className="text-3xl font-bold text-blue-800 mb-4">
             About Shri XYZ

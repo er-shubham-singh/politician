@@ -19,13 +19,12 @@ const AdminLogin = () => {
 
   return (
     <div className="max-w-md mx-auto mt-16 p-6 border rounded shadow-md bg-white">
-      {/* Header with back button and title */}
       <div className="flex items-center justify-between mb-6">
         <button onClick={() => navigate(-1)} className="text-gray-600 hover:text-blue-700 transition">
           <ArrowLeft size={24} />
         </button>
         <h2 className="text-2xl font-bold flex-grow text-center">Admin Login</h2>
-        <div className="w-6"></div> {/* Spacer to keep the title centered */}
+        <div className="w-6"></div> 
       </div>
       
       <form onSubmit={handleLogin}>

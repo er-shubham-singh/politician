@@ -21,24 +21,19 @@ const HeroCarousel = ({ slides, onSlideClick }) => {
               className="w-full h-full bg-center bg-cover relative cursor-pointer"
               style={{ backgroundImage: `url(${item.imageUrl})` }}
             >
-              {/* Dark Overlay */}
               <div className="absolute inset-0 bg-black/50" />
 
-              {/* Text Content */}
               <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
                 <h2 className="text-4xl md:text-5xl font-bold mb-4">
                   {item.title}
                 </h2>
                 <p className="max-w-2xl text-lg mb-6">{item.summary}</p>
 
-                {/* CTA Buttons */}
                 <div className="flex gap-4 mb-6">
-                  {/* Join as Volunteer - No action now */}
                   <button className="px-6 py-2 bg-yellow-400 text-black font-semibold rounded-lg shadow hover:bg-yellow-300 transition">
                     Join as Volunteer
                   </button>
 
-                  {/* View Details - Opens NewsModal */}
                   <button
                     onClick={() => onSlideClick(item)}
                     className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 transition"
@@ -47,7 +42,6 @@ const HeroCarousel = ({ slides, onSlideClick }) => {
                   </button>
                 </div>
 
-                {/* Social Icons */}
                 <div className="flex gap-4 text-2xl">
                   <a href="#" className="hover:text-yellow-300"><FaFacebook /></a>
                   <a href="#" className="hover:text-yellow-300"><FaTwitter /></a>

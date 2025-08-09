@@ -17,19 +17,16 @@ const Home = () => {
   const [showSplash, setShowSplash] = useState(true);
   const [isPageLoading, setIsPageLoading] = useState(false);
 
-  // Fetch data when page changes
   useEffect(() => {
     setIsPageLoading(true);
     dispatch(fetchNews(currentPage, 6));
   }, [dispatch, currentPage]);
 
-  // Hide splash after 3s
   useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 3000);
     return () => clearTimeout(timer);
   }, []);
 
-  // Hide page loader when redux finishes loading
   useEffect(() => {
     if (!loading) {
       setIsPageLoading(false);
@@ -40,7 +37,6 @@ const Home = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      {/* Hero Carousel */}
       {newsList && newsList.length > 0 && (
         <HeroCarousel
           slides={newsList.slice(0, 5)} // only first 5 news
@@ -48,7 +44,6 @@ const Home = () => {
         />
       )}
 
-      {/* Vision & Mission */}
       <section className="py-12 px-6 grid md:grid-cols-2 gap-6 text-center md:text-left">
         <div className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
           <h2 className="text-2xl font-bold text-blue-700 mb-3">Vision</h2>
@@ -65,7 +60,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* News Section */}
       <section className="p-6">
         <h2 className="text-3xl font-bold mb-8 text-center text-blue-800">
           Latest News & Updates
@@ -98,7 +92,6 @@ const Home = () => {
               )}
             </div>
 
-            {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex justify-center mt-8 gap-2 items-center">
                 <button

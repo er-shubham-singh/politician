@@ -10,9 +10,9 @@ import {
 
 const initialState = {
   newsList: [],
-  loading: false,       // for fetching news
+  loading: false,       
   error: null,
-  creating: false,      // for creating news
+  creating: false,      
   success:false,
   createdNews: null,
   currentPage: 1,
@@ -41,7 +41,6 @@ const newsReducer = (state = initialState, action) => {
     case NEWS_FETCH_FAIL:
       return { ...state, loading: false, error: action.payload };
 
-    // Creating news
     case NEWS_CREATE_REQUEST:
       return { ...state, creating: true, error: null,success:false };
 

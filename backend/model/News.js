@@ -6,8 +6,7 @@ const newsSchema = new mongoose.Schema({
     required: true,
   },
   date: {
-    type: String,   // You might want to consider Date type if you handle dates more strictly
-    required: true,
+    type: String,   
   },
   summary: {
     type: String,

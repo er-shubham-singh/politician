@@ -5,7 +5,6 @@ import { Typewriter } from "react-simple-typewriter";
 const SplashScreen = () => {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-blue-500 via-purple-400 to-pink-500 bg-400 animate-gradient-x text-white backdrop-blur-md">
-      {/* Logo */}
       <motion.img
         src="https://www.b2world.in/assets/logo-C1MCNYRb.png"
         alt="Logo"
@@ -22,7 +21,6 @@ const SplashScreen = () => {
         whileTap={{ scale: 0.9, rotate: -10 }}
       />
 
-      {/* Typing Text */}
       <motion.div
         className="text-2xl md:text-3xl font-semibold text-white"
         initial={{ opacity: 0, y: 20 }}

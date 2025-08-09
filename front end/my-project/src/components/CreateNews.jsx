@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createNews, resetNewsCreate } from "../Redux/news/Action";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const CreateNews = () => {
@@ -9,29 +10,36 @@ const CreateNews = () => {
   const [summary, setSummary] = useState("");
   const [date, setDate] = useState("");
   const [imageFile, setImageFile] = useState(null);
+  const [buttonText, setButtonText] = useState("Submit");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { loading, error, success } = useSelector((state) => state.news);
   const { token } = useSelector((state) => state.auth);
+useEffect(() => {
+  if (loading) {
+    setButtonText("Submitting...");
+  }
+}, [loading]);
+
 
   useEffect(() => {
     if (success) {
+      setButtonText("Data Saved ✅");
       toast.success("News created successfully!", {
         position: "top-right",
-        autoClose: 3000, // 3 seconds
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
+        autoClose: 2000,
       });
-
-      // Reset form fields after success
       setTitle("");
       setSummary("");
       setDate("");
       setImageFile(null);
 
-      // Optionally reset success flag in redux after showing toast
+      setTimeout(() => {
+        setButtonText("Submit");
+      }, 2000);
+
       dispatch(resetNewsCreate());
     }
   }, [success, dispatch]);
@@ -40,28 +48,40 @@ const CreateNews = () => {
     setImageFile(e.target.files[0] || null);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    if (!token) {
-      alert("You must be logged in to create news.");
-      return;
-    }
+  if (!token) {
+    alert("You must be logged in to create news.");
+    return;
+  }
 
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("summary", summary);
-    formData.append("date", date);
+  setButtonText("Submitting...");
 
-    if (imageFile) {
-      formData.append("image", imageFile);
-    }
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("summary", summary);
+  formData.append("date", date);
 
-    dispatch(createNews(formData, token));
-  };
+  if (imageFile) {
+    formData.append("image", imageFile);
+  }
+
+  dispatch(createNews(formData, token));
+};
+
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 border rounded shadow relative">
+      <div className="flex justify-end mb-4">
+        <button
+          onClick={() => navigate("/")}
+          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+        >
+          Go to Home
+        </button>
+      </div>
+
       <h2 className="text-xl font-bold mb-4">Create News</h2>
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -72,7 +92,7 @@ const CreateNews = () => {
           onChange={(e) => setTitle(e.target.value)}
           className="w-full p-2 mb-4 border rounded"
           required
-          disabled={loading} // Disable form while loading
+          disabled={loading}
         />
 
         <textarea
@@ -81,7 +101,7 @@ const CreateNews = () => {
           onChange={(e) => setSummary(e.target.value)}
           className="w-full p-2 mb-4 border rounded"
           required
-          disabled={loading} // Disable form while loading
+          disabled={loading}
         ></textarea>
 
         <input
@@ -90,7 +110,7 @@ const CreateNews = () => {
           onChange={(e) => setDate(e.target.value)}
           className="w-full p-2 mb-4 border rounded"
           required
-          disabled={loading} // Disable form while loading
+          disabled={loading}
         />
 
         <input
@@ -98,25 +118,27 @@ const CreateNews = () => {
           accept="image/*"
           onChange={handleImageChange}
           className="mb-4"
-          disabled={loading} // Disable form while loading
+          disabled={loading}
         />
 
-        <button
-          type="submit"
-          disabled={loading}
-          className={`w-full py-2 px-4 rounded text-white ${
-            loading ? "bg-blue-400 cursor-not-allowed" : "bg-blue-700 hover:bg-blue-800"
-          }`}
-        >
-          {loading ? "Submitting..." : "Submit"}
-        </button>
+<button
+  type="submit"
+  disabled={loading || buttonText === "Data Saved ✅"}
+  className={`w-full py-2 px-4 rounded text-white ${
+    loading || buttonText === "Data Saved ✅"
+      ? "bg-blue-400 cursor-not-allowed"
+      : "bg-blue-700 hover:bg-blue-800"
+  }`}
+>
+  {buttonText}
+</button>
+
 
         {error && (
           <p className="text-red-600 mt-2 text-center font-medium">{error}</p>
         )}
       </form>
 
-      {/* Toast container to show toast messages */}
       <ToastContainer />
     </div>
   );

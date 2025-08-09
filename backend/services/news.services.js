@@ -1,20 +1,4 @@
-// import News from "../model/News.js"
 
-
-// export const getAllNewsServices = async() =>{
-//         const news = await News.find().sort({_id:-1})
-//         return news
-// }
-
-// export const createNewsService = async(newsData)=>{
-//     const {title,summary,date} = newsData
-//     if(!title || !date || !summary){
-//         throw new Error("All field required")
-//     }
-
-//     const news = new News({title,summary,date})
-//     return await news.save()
-// }
 
 import News from "../model/News.js";
 import axios from "axios";
@@ -83,22 +67,7 @@ export const getAllNewsServices = async (page = 1, limit = 10) => {
 };
 
 
-// export const createNewsService = async (newsData) => {
-//   const { title, summary, date, imageUrl, link } = newsData;
-//   if (!title || !date || !summary) {
-//     throw new Error("All fields required");
-//   }
 
-//   const news = new News({
-//     title,
-//     summary,
-//     date,
-//     imageUrl: imageUrl || null,
-//     link: link || null,
-//   });
-
-//   return await news.save();
-// };
 
 
 export const createNewsService = async (newsData) => {

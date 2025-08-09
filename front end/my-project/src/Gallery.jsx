@@ -2,24 +2,24 @@ import React from "react";
 
 const galleryImages = [
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Political_rally_in_India.jpg/800px-Political_rally_in_India.jpg",
-    caption: "Mass Political Rally"
+    src: "https://www.foodsecurityportal.org/sites/default/files/featured-image/2021-07/8163387238_adc735ce18_h.jpg",
+        caption: "Child Labor in the Fields"
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Indian_Politician_Addressing_Crowd.jpg/800px-Indian_Politician_Addressing_Crowd.jpg",
-    caption: "Public Address"
+    src: "https://data.unicef.org/wp-content/uploads/2019/12/60.jpg",
+    caption: "Living in Poverty"
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Political_campaign_in_rural_area.jpg/800px-Political_campaign_in_rural_area.jpg",
-    caption: "Campaign in Rural Area"
+    src: "https://images.unsplash.com/photo-1591166877427-775ac88c7a8c?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjA0OXwwfDF8c2VhY2h8Mnx8cGVvZGxlX3ZpbGxhZ2V8ZW58MHx8fHx8fDE2Nzk0NzY5MDA&ixlib=rb-1.2.1&q=80&w=400",
+    caption: "Rural Poverty and Struggles"
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Community_service_event_in_India.jpg/800px-Community_service_event_in_India.jpg",
-    caption: "Community Service Event"
+    src: "https://thumbs.dreamstime.com/b/rural-poverty-37497032.jpg",
+    caption: "Underprivileged Rural Children"
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Youth_meeting_with_politician.jpg/800px-Youth_meeting_with_politician.jpg",
-    caption: "Meeting with Youth"
+    src: "https://cc.gfamedia.org/special-report/child-labor/young-boys-working-construction.jpg",
+    caption: "Child Labor in Construction"
   }
 ];
 
@@ -27,7 +27,7 @@ const Gallery = () => {
   return (
     <div className="p-6 max-w-6xl mx-auto">
       <h2 className="text-3xl font-bold text-blue-800 mb-6 text-center">
-        Gallery
+        Social Issues Gallery
       </h2>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
         {galleryImages.map((img, idx) => (

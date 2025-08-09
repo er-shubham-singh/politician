@@ -2,23 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { CheckCircle, ArrowLeft, Mail, MapPin, Phone } from 'lucide-react';
-// Assuming your contact action is in this path and named `createContact`
 import { createContact } from "../Redux/contact/Action"; 
 
 const ContactForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Get state from the Redux store
   const { loading, success, error, message } = useSelector(
     (state) => state.contact
   );
 
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-  // Reset the form state on successful submission
   useEffect(() => {
-    // We check for `success` from the Redux state to know when to clear the form
     if (success) {
       setForm({ name: "", email: "", message: "" });
     }
@@ -29,16 +24,13 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Dispatch the Redux action with the form data
     dispatch(createContact(form));
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
       <div className="w-full max-w-5xl p-8 bg-white rounded-lg shadow-lg grid md:grid-cols-2 gap-8">
-        
-        {/* Contact Details Section */}
-        <div className="bg-blue-700 text-white rounded-lg p-8 flex flex-col justify-center">
+                <div className="bg-blue-700 text-white rounded-lg p-8 flex flex-col justify-center">
           <h3 className="text-3xl font-bold mb-4">Contact Information</h3>
           <p className="text-gray-200 mb-6">
             Feel free to reach out to us. We would love to hear from you!
@@ -46,7 +38,7 @@ const ContactForm = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <MapPin size={24} />
-              <span>123 Main Street, Cityville, State, 12345</span>
+              <span>B2B world samasti pur</span>
             </div>
             <div className="flex items-center space-x-3">
               <Phone size={24} />
@@ -61,7 +53,6 @@ const ContactForm = () => {
 
         {/* Form Section */}
         <div>
-          {/* Header with back button */}
           <div className="flex items-center justify-between mb-6">
             <button onClick={() => navigate(-1)} className="text-gray-600 hover:text-blue-700 transition">
               <ArrowLeft size={24} />
@@ -69,10 +60,9 @@ const ContactForm = () => {
             <h2 className="text-2xl font-bold flex-grow text-center text-gray-800">
               Get In Touch
             </h2>
-            <div className="w-6"></div> {/* Spacer for alignment */}
+            <div className="w-6"></div> 
           </div>
 
-          {/* Conditional rendering for success or form */}
           {success ? (
             <div className="flex flex-col items-center justify-center p-8 space-y-4 text-center">
               <CheckCircle size={64} className="text-green-500" />

@@ -9,20 +9,19 @@ const News = () => {
   const { newsList, loading, error, currentPage, totalPages } = useSelector((state) => state.news);
 
   const [selectedNews, setSelectedNews] = useState(null);
-  const [isPageLoading, setIsPageLoading] = useState(loading); // Initialize from redux loading
+  const [isPageLoading, setIsPageLoading] = useState(loading); 
 
   useEffect(() => {
-    dispatch(fetchNews(currentPage, 10)); // fetch 10 per page
+    dispatch(fetchNews(currentPage, 10)); 
   }, [dispatch, currentPage]);
 
-  // Sync local loader with redux loading state
   useEffect(() => {
     setIsPageLoading(loading);
   }, [loading]);
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
-      // Just dispatch, no need to set local loading explicitly
+
       dispatch(fetchNews(page, 10));
     }
   };
@@ -33,7 +32,6 @@ const News = () => {
         Latest News & Updates
       </h2>
 
-      {/* Show loader when page is changing or initial load */}
       {isPageLoading && (
         <div className="flex justify-center items-center py-10">
           <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
@@ -88,7 +86,6 @@ const News = () => {
         </>
       )}
 
-      {/* Modal for full news */}
       {selectedNews && (
         <NewsModal news={selectedNews} onClose={() => setSelectedNews(null)} />
       )}

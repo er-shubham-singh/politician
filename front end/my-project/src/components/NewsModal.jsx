@@ -7,14 +7,12 @@ const NewsModal = ({ news, onClose }) => {
     <div className="news-modal-backdrop" onClick={onClose}>
       <div
         className="news-modal-container"
-        onClick={(e) => e.stopPropagation()} // Prevent backdrop click from closing
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
         <button className="news-modal-close" onClick={onClose} aria-label="Close">
           ✕
         </button>
 
-        {/* Image */}
         {news.imageUrl && (
           <img
             src={news.imageUrl}
@@ -23,7 +21,6 @@ const NewsModal = ({ news, onClose }) => {
           />
         )}
 
-        {/* Title */}
         <h2 className="news-modal-title">{news.title}</h2>
         <p className="news-modal-date">
           {new Date(news.date).toLocaleDateString("en-US", {
@@ -33,10 +30,8 @@ const NewsModal = ({ news, onClose }) => {
           })}
         </p>
 
-        {/* Summary / Content */}
         <p className="news-modal-content">{news.summary}</p>
 
-        {/* Source link */}
         {news.link && (
           <a
             href={news.link}

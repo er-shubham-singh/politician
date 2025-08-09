@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className="bg-gray-100 text-center p-4 mt-10 text-sm text-gray-600">
-      © 2025 Shri XYZ. All rights reserved.
+      © 2025 . All rights reserved.
     </footer>
   );
 };

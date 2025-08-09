@@ -6,10 +6,8 @@ import { createVolunteer, resetVolunteer } from "../Redux/volunter/Action";
 const JoinModal = ({ onClose }) => {
   const dispatch = useDispatch();
   
-  // Get state directly from the Redux store.
   const { loading, error, success } = useSelector((state) => state.volunteer);
 
-  // Updated state to use 'phone' and 'message' to match the backend payload.
   const [form, setForm] = useState({ 
     name: "", 
     email: "", 
@@ -17,19 +15,16 @@ const JoinModal = ({ onClose }) => {
     message: "" 
   });
 
-  // Reset form on successful submission.
   useEffect(() => {
     if (success) {
       setForm({ name: "", email: "", phone: "", message: "" });
     }
   }, [success]);
 
-  // Reset volunteer state on mount (modal open)
   useEffect(() => {
     dispatch(resetVolunteer());
   }, [dispatch]);
 
-  // Custom close handler to reset state and close modal
   const handleClose = () => {
     dispatch(resetVolunteer());
     onClose();
@@ -45,13 +40,10 @@ const JoinModal = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Background overlay with blur and transparency */}
       <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm" onClick={handleClose}></div>
       
-      {/* Modal Container */}
       <div className="relative w-full max-w-lg p-6 bg-white rounded-lg shadow-2xl z-10">
         
-        {/* Header with Close Button */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-2">
             {success ? (
@@ -69,8 +61,6 @@ const JoinModal = ({ onClose }) => {
             <X size={24} />
           </button>
         </div>
-
-        {/* Conditional rendering for success or form */}
         {success ? (
           <div className="flex flex-col items-center justify-center p-8 space-y-4 text-center">
             <CheckCircle size={64} className="text-green-500" />
